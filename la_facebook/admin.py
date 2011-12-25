@@ -3,4 +3,6 @@ from django.conf import settings
 from la_facebook.models import UserAssociation
 
 if settings.DEBUG:
-    admin.site.register(UserAssociation)
+    class UserAssociationAdmin(admin.ModelAdmin):
+        list_display = ("user", "identifier", "token", "expires")
+    admin.site.register(UserAssociation, UserAssociationAdmin)
