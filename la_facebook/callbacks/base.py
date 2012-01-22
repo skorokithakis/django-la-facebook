@@ -71,7 +71,7 @@ class BaseFacebookCallback(object):
             logger.debug("redirect not in get params")
             # try the session if available
             if hasattr(request, "session"):
-                redirect_to = request.session.get(session_key_value)
+                redirect_to = request.session.get(session_key_value, "")
                 # Heavier security check -- don't allow redirection to a different host.
                 netloc = urlparse.urlparse(redirect_to)[1]
                 if netloc and netloc != request.host:
